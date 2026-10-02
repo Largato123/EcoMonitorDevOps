@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Baixar código
+      - name: Checkout do código
         uses: actions/checkout@v4
 
       - name: Configurar .NET 8
@@ -21,8 +21,11 @@ jobs:
         with:
           dotnet-version: '8.0.x'
 
-      - name: Restaurar dependências
-        run: dotnet restore
+      - name: Restaurar API
+        run: dotnet restore MonitoramentoEnergetico.csproj
+
+      - name: Restaurar testes
+        run: dotnet restore MonitoramentoEnergeticoAPI.Tests/MonitoramentoEnergeticoAPI.Tests.csproj
 
       - name: Compilar API
         run: dotnet build MonitoramentoEnergetico.csproj --no-restore --configuration Release
