@@ -88,18 +88,15 @@ builder.Services.AddAuthorization();
 var app = builder.Build();
 
 // Swagger
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.UseSwagger();
+app.UseSwaggerUI();
 
 // Pipeline (ordem correta)
 
-// Middleware global de exceções
+// Middleware global de exceÃ§Ãµes
 app.UseMiddleware<ExceptionMiddleware>();
 
-// Autenticação e autorização
+// AutenticaÃ§Ã£o e autorizaÃ§Ã£o
 app.UseAuthentication();
 app.UseAuthorization();
 
